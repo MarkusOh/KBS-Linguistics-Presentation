@@ -38,6 +38,19 @@ struct Slide: Hashable {
         34: AnyView(Slide34()),
         35: AnyView(Slide35()),
         36: AnyView(Slide36()),
+        37: AnyView(Slide37()),
+        38: AnyView(Slide38()),
+        39: AnyView(Slide39()),
+        40: AnyView(Slide40()),
+        41: AnyView(Slide41()),
+        42: AnyView(Slide42()),
+        43: AnyView(Slide43()),
+        44: AnyView(Slide44()),
+        45: AnyView(Slide45()),
+        46: AnyView(Slide46()),
+        47: AnyView(Slide47()),
+        48: AnyView(Slide48()),
+        49: AnyView(Slide49()),
     ]
     let number: Int
 }
