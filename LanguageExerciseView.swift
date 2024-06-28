@@ -23,10 +23,12 @@ struct LanguageExerciseView: View {
                     if index == 0 {
                         Text(content)
                             .font(.system(size: 75, weight: .semibold))
+                            .minimumScaleFactor(0.8)
                         Spacer(minLength: .zero)
                     } else {
                         Text(content)
                             .font(.system(size: 60, weight: important ? .bold : .regular))
+                            .minimumScaleFactor(0.5)
                             .padding(.bottom, important ? nil : 25)
                     }
                 }
