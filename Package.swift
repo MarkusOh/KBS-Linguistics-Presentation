@@ -16,6 +16,7 @@ let package = Package(
         .iOSApplication(
             name: "My App",
             targets: ["AppModule"],
+            bundleIdentifier: "com.seungsub.KBSLinguistics",
             teamIdentifier: "UM34485SJG",
             displayVersion: "1.0",
             bundleVersion: "1",

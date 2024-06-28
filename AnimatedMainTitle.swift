@@ -67,7 +67,7 @@ struct AnimatedMainTitle: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: .zero) {
             ForEach(Array(title.map({ $0 }).enumerated()), id: \.offset) { (index, char) in
-                let previousWhiteSpaceCount = title.filter({ $0.isWhitespace }).count
+                let previousWhiteSpaceCount = title.prefix(upTo: title.index(title.startIndex, offsetBy: index + 1)).filter({ $0.isWhitespace }).count
                 
                 AnimatedCharacter(char: char, index: index - previousWhiteSpaceCount, sync: sync, fontSize: fontSize)
             }
