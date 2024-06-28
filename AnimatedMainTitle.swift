@@ -34,11 +34,19 @@ struct AnimatedCharacter: View {
     }
     
     func animate() async {
-        try? await Task.sleep(for: .milliseconds((index + 1) * 100))
+        do {
+            try await Task.sleep(for: .milliseconds((index + 1) * 100))
+        } catch {
+            return
+        }
         withAnimation {
             scale = 1
         }
-        try? await Task.sleep(for: .milliseconds(300))
+        do {
+            try await Task.sleep(for: .milliseconds(300))
+        } catch {
+            return
+        }
         withAnimation {
             scale = 0.8
         }
@@ -72,7 +80,11 @@ struct AnimatedMainTitle: View {
             
             repeat {
                 sync.send()
-                try? await Task.sleep(for: .seconds(3))
+                do {
+                    try await Task.sleep(for: .seconds(3))
+                } catch {
+                    return
+                }
             } while shouldAnimate
         }
     }

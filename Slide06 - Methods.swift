@@ -76,7 +76,11 @@ struct Slide06: View {
             while animate {
                 sync.send(animateIndex)
                 animateIndex = (animateIndex + 1) % 3
-                try? await Task.sleep(for: .milliseconds(1500))
+                do {
+                    try await Task.sleep(for: .milliseconds(1500))
+                } catch {
+                    return
+                }
             }
         }
         .onDisappear {
