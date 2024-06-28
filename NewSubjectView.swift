@@ -11,8 +11,8 @@ import Combine
 struct NewSubjectView: View {
     let title: String
     let systemImage: String
-    @State private var x: Double = 0
-    @State private var y: Double = 0
+    @State private var x: Double = cos(0)
+    @State private var y: Double = sin(0)
     @State private var theta: Double = 0
     @State private var animate = false
     @State private var sync = PassthroughSubject<Void, Never>()
