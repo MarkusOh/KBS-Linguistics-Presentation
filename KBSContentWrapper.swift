@@ -44,22 +44,18 @@ struct KBSContentWrapper<Content: View>: View {
     
     var navigationButton: some View {
         HStack {
-            Button {
+            Button(action: {
                 dismiss()
-            } label: {
-                VStack {
-                    Color.clear
-                }
-                .contentShape(Rectangle())
-            }
+            }, label: {
+                Image(systemName: "chevron.left")
+            })
             Spacer()
-            Button(action: action) {
-                VStack {
-                    Color.clear
-                }
-                .contentShape(Rectangle())
-            }
+            Button(action: action, label: {
+                Image(systemName: "chevron.right")
+            })
         }
+        .font(.system(size: 80))
+        .opacity(0.5)
         .padding()
     }
 }
