@@ -16,20 +16,25 @@ struct LanguageExerciseView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: .zero) {
                 ForEach(enumeratedContents, id: \.0) { (index, content) in
+                    let important = index % 2 == 1
+                    
                     if index == 0 {
                         Text(content)
-                            .font(.system(size: 85, weight: .semibold))
+                            .font(.system(size: 75, weight: .semibold))
+                        Spacer(minLength: .zero)
                     } else {
                         Text(content)
-                            .font(.system(size: 70, weight: index % 2 == 1 ? .bold : .regular))
+                            .font(.system(size: 60, weight: important ? .bold : .regular))
+                            .padding(.bottom, important ? nil : 25)
                     }
                 }
+                Spacer()
             }
             .frame(width: proxy.size.width, height: proxy.size.height, alignment: .leading)
         }
-        .padding(.horizontal, 75)
+        .padding(.leading, 75)
     }
 }
 
@@ -38,7 +43,9 @@ struct LanguageExerciseView: View {
         LanguageExerciseView(contents: [
             "본문장",
             "I work",
-            "저는 일을 합니다."
+            "저는 일을 합니다.",
+            "I study",
+            "저는 공부합니다."
         ])
     } action: {
         
