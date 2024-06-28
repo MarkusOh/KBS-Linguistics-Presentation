@@ -11,18 +11,34 @@ struct KeywordView: View {
     let imageName: String
     let keyword: String
     
+    @State private var size = 1.5
+    
     var body: some View {
-        Image(imageName)
-            .resizable()
-            .scaledToFit()
-            .frame(width: 500, height: 500)
-            .overlay {
-                Text(keyword)
-                    .font(.system(size: 180, weight: .bold))
-                    .foregroundStyle(.white)
-                    .shadow(radius: 30)
-                    .shadow(radius: 30)
+        HStack {
+            Spacer()
+            Image(imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 500, height: 500)
+            Spacer()
+        }
+        .overlay {
+            Text(keyword)
+                .font(.system(size: 225, weight: .bold))
+                .scaleEffect(size)
+                .foregroundStyle(.white)
+                .shadow(radius: 30)
+                .shadow(radius: 30)
+        }
+        .onAppear {
+            guard size != 0.8 else {
+                return
             }
+            
+            withAnimation {
+                size = 0.8
+            }
+        }
     }
 }
 
