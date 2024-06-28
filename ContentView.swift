@@ -51,6 +51,7 @@ struct Slide: Hashable {
         47: AnyView(Slide47()),
         48: AnyView(Slide48()),
         49: AnyView(Slide49()),
+        50: AnyView(Slide50()),
     ]
     let number: Int
 }
