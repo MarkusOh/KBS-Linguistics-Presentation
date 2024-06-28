@@ -22,6 +22,22 @@ struct Slide: Hashable {
         18: AnyView(Slide18()),
         19: AnyView(Slide19()),
         20: AnyView(Slide20()),
+        21: AnyView(Slide21()),
+        22: AnyView(Slide22()),
+        23: AnyView(Slide23()),
+        24: AnyView(Slide24()),
+        25: AnyView(Slide25()),
+        26: AnyView(Slide26()),
+        27: AnyView(Slide27()),
+        28: AnyView(Slide28()),
+        29: AnyView(Slide29()),
+        30: AnyView(Slide30()),
+        31: AnyView(Slide31()),
+        32: AnyView(Slide32()),
+        33: AnyView(Slide33()),
+        34: AnyView(Slide34()),
+        35: AnyView(Slide35()),
+        36: AnyView(Slide36()),
     ]
     let number: Int
 }

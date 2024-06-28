@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MyView: View {
+struct Slide35: View {
     var body: some View {
         LanguageExerciseView(contents: [
             "삼인칭 주어 단수 + 세부사항",
@@ -25,7 +25,7 @@ struct MyView: View {
 
 #Preview {
     KBSContentWrapper {
-        MyView()
+        Slide35()
     } action: {
         
     }
