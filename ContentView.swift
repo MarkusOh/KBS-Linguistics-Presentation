@@ -61,6 +61,7 @@ struct ContentView: View {
     
     var body: some View {
         basicSetup
+            .focusable()
             .onKeyPress(.rightArrow) {
                 moveToNewSlide()
                 return .handled
