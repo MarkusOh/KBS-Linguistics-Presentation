@@ -29,10 +29,17 @@ struct KBSContentWrapper<Content: View>: View {
                 BackgroundView()
             }
             .contentShape(Rectangle())
-            .overlay {
-                navigationButton
-            }
         }
+        .gesture(
+            DragGesture(minimumDistance: 50)
+                .onEnded { gesture in
+                    if gesture.translation.width > 0 {
+                        dismiss()
+                    } else {
+                        action()
+                    }
+                }
+        )
         .scaleEffect(scale)
         .onAppear {
             withAnimation(.bouncy) {
@@ -40,23 +47,6 @@ struct KBSContentWrapper<Content: View>: View {
             }
         }
         .navigationBarBackButtonHidden()
-    }
-    
-    var navigationButton: some View {
-        HStack {
-            Button(action: {
-                dismiss()
-            }, label: {
-                Image(systemName: "chevron.left")
-            })
-            Spacer()
-            Button(action: action, label: {
-                Image(systemName: "chevron.right")
-            })
-        }
-        .font(.system(size: 80))
-        .opacity(0.5)
-        .padding()
     }
 }
 
