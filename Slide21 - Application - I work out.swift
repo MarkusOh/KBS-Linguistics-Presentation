@@ -17,8 +17,6 @@ struct Slide21: View {
             "저는 혼자서 운동합니다.",
             "I work out on weekends.",
             "저는 주말에 운동합니다.",
-            "I work out on weekends by myself at home.",
-            "저는 혼자 집에서 주말에 운동합니다."
         ])
     }
 }
