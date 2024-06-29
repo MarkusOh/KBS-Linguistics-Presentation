@@ -61,6 +61,14 @@ struct ContentView: View {
     
     var body: some View {
         basicSetup
+            .onKeyPress(.rightArrow) {
+                moveToNewSlide()
+                return .handled
+            }
+            .onKeyPress(.leftArrow) {
+                moveBack()
+                return .handled
+            }
     }
     
     var mainTitle: some View {
@@ -85,5 +93,9 @@ struct ContentView: View {
     
     func moveToNewSlide() {
         paths.append(.init(number: paths.count + 1))
+    }
+    
+    func moveBack() {
+        paths.removeLast()
     }
 }
