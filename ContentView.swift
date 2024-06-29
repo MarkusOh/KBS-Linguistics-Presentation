@@ -97,6 +97,10 @@ struct ContentView: View {
     }
     
     func moveBack() {
+        guard paths.isEmpty == false else {
+            return
+        }
+        
         paths.removeLast()
     }
 }
