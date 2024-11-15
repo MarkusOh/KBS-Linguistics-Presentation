@@ -83,12 +83,24 @@ struct ContentView: View {
     }
     
     var basicSetup: some View {
-        NavigationStack(path: $paths) {
-            main.navigationDestination(for: Slide.self) { slide in
-                KBSContentWrapper(content: {
-                    Slide.slides[slide.number, default: AnyView(Text("Empty"))]
-                }, action: moveToNewSlide)
+        GeometryReader { proxy in
+            NavigationStack(path: $paths) {
+                main.navigationDestination(for: Slide.self) { slide in
+                    KBSContentWrapper(content: {
+                        Slide.slides[slide.number, default: AnyView(Text("Empty"))]
+                    }, action: moveToNewSlide)
+                }
             }
+            .frame(width: 1366, height: 1024)
+            .scaleEffect(
+                proxy.size.height / 1024,
+                anchor: .center
+            )
+            .frame(
+                width: proxy.size.width,
+                height: proxy.size.height,
+                alignment: .center
+            )
         }
     }
     
