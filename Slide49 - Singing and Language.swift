@@ -17,8 +17,7 @@ struct Slide49: View {
     }
     
     func openLink() {
-        // https://www.youtube.com/watch?v=fvPO7Szxk7Y
-        UIApplication.shared.open(URL(string: "youtube://fvPO7Szxk7Y")!)
+        UIApplication.shared.open(URL(string: "https://www.youtube.com/watch?v=fvPO7Szxk7Y")!)
     }
 }
 
