@@ -56,19 +56,65 @@ struct Slide: Hashable {
     let number: Int
 }
 
+struct KeyPressDetector: UIViewControllerRepresentable {
+    class CustomVC: UIViewController {
+        var action: ((UIKey) -> Void)?
+        
+        override func pressesBegan(
+            _ presses: Set<UIPress>,
+            with event: UIPressesEvent?
+        ) {
+            guard let key = presses.first?.key else {
+                return
+            }
+            
+            action?(key)
+        }
+    }
+    
+    let action: (UIKey) -> Void
+    
+    func makeUIViewController(
+        context: Context
+    ) -> CustomVC {
+        CustomVC()
+    }
+    
+    func updateUIViewController(
+        _ uiViewController: CustomVC,
+        context: Context
+    ) {
+        uiViewController.action = action
+    }
+    
+    func sizeThatFits(
+        _ proposal: ProposedViewSize,
+        uiViewController: CustomVC,
+        context: Context
+    ) -> CGSize? {
+        .init(width: 0, height: 0)
+    }
+}
+
 struct ContentView: View {
     @State private var paths: [Slide] = .init()
     
     var body: some View {
         basicSetup
-            .focusable()
-            .onKeyPress(.rightArrow) {
-                moveToNewSlide()
-                return .handled
-            }
-            .onKeyPress(.leftArrow) {
-                moveBack()
-                return .handled
+            .overlay {
+                KeyPressDetector { key in
+                    switch key.keyCode {
+                    case .keyboardLeftArrow:
+                        moveBack()
+                    case .keyboardRightArrow:
+                        moveToNewSlide()
+                    case .keyboardDownArrow:
+                        paths = []
+                    case .keyboardUpArrow:
+                        paths = Slide.slides.map({ Slide(number: $0.key) })
+                    default: ()
+                    }
+                }
             }
     }
     
