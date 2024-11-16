@@ -102,6 +102,9 @@ struct ContentView: View {
                 alignment: .center
             )
         }
+        .background {
+            Color.black
+        }
     }
     
     func moveToNewSlide() {
