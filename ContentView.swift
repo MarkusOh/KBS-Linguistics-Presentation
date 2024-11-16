@@ -111,7 +111,11 @@ struct ContentView: View {
                     case .keyboardDownArrow:
                         paths = []
                     case .keyboardUpArrow:
-                        paths = Slide.slides.map({ Slide(number: $0.key) })
+                        paths = Slide
+                            .slides
+                            .map({ $0.key })
+                            .sorted()
+                            .map({ Slide(number: $0) })
                     default: ()
                     }
                 }
